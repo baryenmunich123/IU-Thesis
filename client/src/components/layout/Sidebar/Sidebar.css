@@ -1,0 +1,17 @@
+.sidebar-container{
+    position: fixed;
+    height: 100%;
+    width: 260px;
+    background-color: #E8E8E8;
+}
+
+.sidebar-list{
+    width: 200px;
+    height: 356px;
+    margin: 32px auto auto;
+}
+
+.sidebar-list li{
+    list-style-type: none;
+    padding-bottom: 40px;
+}

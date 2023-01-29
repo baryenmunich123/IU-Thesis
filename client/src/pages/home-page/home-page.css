@@ -1,0 +1,30 @@
+.homepage-container{
+    margin-top: 68px;
+    margin-left: 260px;
+    background-color: #F5F5F5;
+    height: 800px;
+}
+
+.homepage-name{
+    font-weight: 700;
+    font-size: 50px;
+    margin-left: 36px;
+}
+
+.homepage-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.homepage-search{
+    height: 50px;
+    width: 400px;
+    margin-top: 10px;
+    margin-right: 40px;
+    border: 1px solid #4B4444;
+    border-radius: 6px;
+}
+
+.homepage-catalogue-container{
+    display: flex;
+}

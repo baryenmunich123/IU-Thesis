@@ -1,0 +1,54 @@
+.header-container{
+    background-color: white;
+    height: 68px;
+    border-bottom: 4px solid #ECEFF4;;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;  
+    justify-content: space-between;
+}
+
+.header-name-container{  
+    margin-left: 70px;
+}
+
+.header-name-container,
+.header-account-container{
+    display: flex;  
+}
+
+.header-account-container{
+    float: right;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.header-logo{
+    height: 62px;
+    padding-top: 2px;
+}
+
+.header-title{
+    color: #0C4DA2;
+    line-height: 66px;
+    margin-left: 24px;
+    font-size: 40px;
+}
+
+.header-account-id{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 66px;
+    color: black;
+}
+
+.header-dropdown-wrapper{
+    padding-top: 26px;
+    margin-left: 8px;
+    color: #D9D9D9;
+}
+
+.header-dropdown-btn{
+}

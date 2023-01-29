@@ -1,0 +1,45 @@
+.footer-container{
+    height: 147px;
+    background-color: #f5f5f5;
+    margin-left: 260px;
+    position: fixed;
+    bottom: 0;
+    color: #0C4DA2;
+}
+
+.footer-line{
+    border: 1px solid rgba(0, 0, 0, 0.068);
+    width: 80%;
+    margin: 0 auto auto;
+}
+
+.footer-list{
+    display: flex;
+    width: 90%;
+    margin: 0px auto auto;
+    padding-top: 6px;
+    justify-content: space-around;
+}
+
+.footer-content{
+    width: 30%;
+}
+
+.footer-content-description{
+    font-size: 16px;
+}
+
+.footer-content h3{
+    text-align: center;
+}
+
+.footer-contact-list,
+.footer-list,
+.footer-follow-list{
+    list-style-type: none;
+}
+
+.footer-follow-list{
+    display: flex;
+    justify-content: center;
+}
