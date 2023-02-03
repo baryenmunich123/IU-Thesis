@@ -1,8 +1,9 @@
-import  FormRoutes from "./form.routes.js";
-import  UserRoutes from "./user.routes.js";
-import  route from "../constants/routes";
-function routes(app) {
-  app.use(route.FORM, FormRoutes);
+const FormRoutes = require ("./form.routes.js");
+const UserRoutes = require ("./user.routes.js");
+const route = require ("../constants/routes.js");
+
+module.exports = function routes(app) {
+  app.use(route.Form, FormRoutes);
   app.use(route.USER, UserRoutes);
 }
-module.exports = routes;
+// module.exports = routes;

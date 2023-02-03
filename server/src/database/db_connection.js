@@ -1,4 +1,4 @@
-import mysql from "mysql";
+const mysql = require("mysql");
 const dbConfig = {
   host: "localhost",
   user: "root",
@@ -14,6 +14,7 @@ module.exports = () =>
 
         return;
       }
+      console.log('Connected to MySQL')
       resolve(connection);
     });
   });

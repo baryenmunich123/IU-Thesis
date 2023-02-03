@@ -10,15 +10,25 @@ import { _getFormFields } from "../../services/form-service";
 export default function RequestPage() {
   const [dataFields, setDataFields] = useState([]);
   const location = useLocation();
-  console.log(location.state);
+  console.log(location.state.id);
+  // useEffect(() => {
+  //   const _getDataFields = async () => {
+  //     const response = await _getFormFields();
+  //     console.log("response11 ", response);
+  //     setDataFields(response?.data);
+  //   };
+  //   _getDataFields();
+  // }, []);
 
   useEffect(() => {
-    const _getDataFields = async () => {
-      const response = await _getFormFields();
-      console.log("response11 ", response);
-      setDataFields(response?.data);
-    };
-    _getDataFields();
+    axios
+      .get(`http://localhost:8080/getFormDataField/${location.state.id}`)
+      .then((res) => {
+        setDataFields(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (

@@ -59,6 +59,7 @@ function HomePage() {
       .get("http://localhost:8080/getformlist")
       .then((res) => {
         setData(res.data);
+        console.log(res)
       })
       .catch((err) => {
         console.log(err);
@@ -92,7 +93,7 @@ function HomePage() {
             const passingData = { id: item.form_no, name: item.form_name };
             return (
               <div>
-                <Link to="/requestpage" state={passingData}>
+                <Link to="/request-page" state={passingData}>
                   {item.form_name}
                 </Link>
               </div>

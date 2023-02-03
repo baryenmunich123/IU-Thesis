@@ -1,6 +1,6 @@
-const sqlQuery = require("../../database/my_sql_query");
-const dbConnection = require("../../database/db_connection");
-const USER_ATTRIBUTE = require("./userAttribute");
+const sqlQuery = require("../database/my_sql_query");
+const dbConnection = require("../database/db_connection");
+// const USER_ATTRIBUTE = require("./userAttribute");
 module.exports = {
   _getFormList: async (req, res) => {
     let sql = "SELECT * FROM form";
