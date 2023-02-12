@@ -1,8 +1,13 @@
 import React from "react";
 import "./request-form.css";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+function RequestForm({ dataFields, formId }) {
+  const navigate = useNavigate()
 
-function RequestForm({ dataFields }) {
+  //Get current date
   const getCurrentDate = () => {
     let newDate = new Date();
     let date = newDate.getDate();
@@ -12,8 +17,31 @@ function RequestForm({ dataFields }) {
     return `${date}${`/`}${month < 10 ? `0${month}` : `${month}`}${`/`}${year}`;
   };
 
+  const [dynamicFormData, setDynamicFormData] = useState({})
+  const [staticFormData, setStaticFormData] = useState({
+    dateCreated: getCurrentDate(),
+    phoneNum: ""
+  })
+
+  let formData = { formId, dynamicFormData, staticFormData }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("run....")
+    try {
+      axios
+        .post("http://localhost:8080/postFormData", formData)
+        .then((res) => {
+          alert( res.data.message)
+        })
+    } catch (e) {
+      console.log("Error", e)
+    }
+
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="requestForm-container">
         <div className="requestForm-input-wrapper">
           <p className="requestForm-input-info">Ngày lập yêu cầu</p>
@@ -21,12 +49,18 @@ function RequestForm({ dataFields }) {
             type="text"
             className="requestForm-input"
             placeholder={getCurrentDate()}
+            value={staticFormData.dateCreated}
             disabled
-          ></input>
+          />
         </div>
         <div className="requestForm-input-wrapper">
           <p className="requestForm-input-info">Số điện thoại</p>
-          <input type="text" className="requestForm-input"></input>
+          <input
+            type="text"
+            className="requestForm-input"
+            onChange={(e) => setStaticFormData({ ...staticFormData, phoneNum: e.target.value })}
+            value={staticFormData.phoneNum}
+          />
         </div>
         <br></br>
         <br></br>
@@ -40,21 +74,18 @@ function RequestForm({ dataFields }) {
                 disabled={item.is_disabled}
                 className="requestForm-input"
                 placeholder=""
+                onChange={(e) => {
+                  setDynamicFormData({ ...dynamicFormData, [item.label]: e.target.value })
+                }}
+                value={dynamicFormData[item.label]}
               />
             </div>
           );
-          // <div className="requestForm-input-wrapper">
-          //   {/* <label className="requestForm-input-info">{item.label}</label>
-          //   <select name={item.label} id={item.label} className="requestForm-input">
-          //     {item.selectValue.map((value) =>
-          //       <option value={value}>{value}</option>)}
-          //   </select> */}
-          // </div>
         })}
       </div>
       <div className="requestForm-btn-container">
-        <Button variant="outlined">Cancel</Button>
-        <Button variant="outlined">Submit</Button>
+        <Button variant="outlined" onClick={() => navigate("/")}>Cancel</Button>
+        <Button variant="outlined" type="submit">Submit</Button>
       </div>
     </form>
   );

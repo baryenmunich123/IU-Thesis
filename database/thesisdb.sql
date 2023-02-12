@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: request_portal
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account` (
-  `account_id` int NOT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `type` varchar(45) DEFAULT NULL,
+  `account_id` varchar(100) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
   PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,6 +36,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES ('ITITIU19040','123','student');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,6 +92,37 @@ LOCK TABLES `form` WRITE;
 INSERT INTO `form` VALUES (1,'Xác nhận sinh viên'),(2,'Mẫu đơn xin đăng ký nhập học lại'),(3,'Mẫu đơn xin nhập học lại và gia hạn thời gian học'),(4,'Mẫu đơn xin rút khỏi danh sách đình chỉ học tập'),(5,'Mẫu đơn xin tạm ngưng thời gian học'),(6,'Mẫu đơn xin gia hạn luận văn (Thesis dealine extention  request form)'),(7,'Incomplete (I) grade request form'),(8,'Undergraduate thesis registration form');
 /*!40000 ALTER TABLE `form` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket`
+--
+
+DROP TABLE IF EXISTS `ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ticket` (
+  `ticket_id` int NOT NULL AUTO_INCREMENT,
+  `date_created` varchar(45) NOT NULL,
+  `date_approved` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT 'Waiting',
+  `note` varchar(45) DEFAULT NULL,
+  `ticket_form_no` int NOT NULL,
+  `ticket_data` json DEFAULT NULL,
+  PRIMARY KEY (`ticket_id`),
+  KEY `ticket_form_no_idx` (`ticket_form_no`),
+  CONSTRAINT `ticket_form_no` FOREIGN KEY (`ticket_form_no`) REFERENCES `form` (`form_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket`
+--
+
+LOCK TABLES `ticket` WRITE;
+/*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
+INSERT INTO `ticket` VALUES (1,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(2,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(3,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(4,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(5,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(6,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(7,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(8,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(9,'11/02/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"2019-2023\", \"Lý do\": \"thích\", \"Nơi sinh\": \"TP HCM\", \"Thời gian học tối đa\": \"2023-01\"}'),(10,'12/02/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"2019=2023\", \"Lý do\": \"hoãn NVQS\", \"Nơi sinh\": \"HCM\", \"Thời gian học tối đa\": \"2023-11\"}');
+/*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -101,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-03 22:37:50
+-- Dump completed on 2023-02-12 21:50:48

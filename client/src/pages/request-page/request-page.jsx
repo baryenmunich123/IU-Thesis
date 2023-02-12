@@ -11,14 +11,6 @@ export default function RequestPage() {
   const [dataFields, setDataFields] = useState([]);
   const location = useLocation();
   console.log(location.state.id);
-  // useEffect(() => {
-  //   const _getDataFields = async () => {
-  //     const response = await _getFormFields();
-  //     console.log("response11 ", response);
-  //     setDataFields(response?.data);
-  //   };
-  //   _getDataFields();
-  // }, []);
 
   useEffect(() => {
     axios
@@ -36,7 +28,7 @@ export default function RequestPage() {
       <MainLayout>
         <div className="requestPage-container">
           <h1 style={{ paddingLeft: "30px" }}>Form: {location.state?.name}</h1>
-          <RequestForm dataFields={dataFields} />
+          <RequestForm dataFields={dataFields} formId = {location.state.id}/>
         </div>
       </MainLayout>
     </>

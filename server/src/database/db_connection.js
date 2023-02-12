@@ -1,20 +1,12 @@
-const mysql = require("mysql");
-const dbConfig = {
-  host: "localhost",
-  user: "root",
-  password: "Phong18092001",
-  database: "request_portal",
-};
-module.exports = () =>
-  new Promise((resolve, reject) => {
-    const connection = mysql.createConnection(dbConfig);
-    connection.connect((error) => {
-      if (error) {
-        reject(error);
+var mysql = require('mysql');
 
-        return;
-      }
-      console.log('Connected to MySQL')
-      resolve(connection);
-    });
-  });
+//local mysql db connection
+var connection = mysql.createConnection({
+    host     : '127.0.0.1',
+    user     : 'root',
+    password : 'Ititiu19040',
+    database : 'request_portal'
+});
+
+module.exports = connection;
+
