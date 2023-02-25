@@ -10,29 +10,28 @@ import { _getFormFields } from "../../services/form-service";
 export default function RequestPage() {
   const [dataFields, setDataFields] = useState([]);
   const location = useLocation();
-  console.log(location.state.id);
+
 
   useEffect(() => {
-    axios
+   {location.state && axios
       .get(`http://localhost:8080/getFormDataField/${location.state.id}`)
       .then((res) => {
         setDataFields(res.data);
       })
       .catch((err) => {
         console.log(err);
-      });
+      });}
   }, []);
 
-  return (
-    <>
+  return dataFields ?
       <MainLayout>
         <div className="requestPage-container">
           <h1 style={{ paddingLeft: "30px" }}>Form: {location.state?.name}</h1>
-          <RequestForm dataFields={dataFields} formId = {location.state.id}/>
+        {location.state && <RequestForm dataFields={dataFields} formId = {location.state.id}/>}
         </div>
       </MainLayout>
-    </>
-  );
+    
+  : <p>Loading....</p>
 }
 
 // const formValue = [
