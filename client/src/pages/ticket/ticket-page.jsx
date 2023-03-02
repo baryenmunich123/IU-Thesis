@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import StepContent from '@mui/material/StepContent';
+import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -35,6 +36,30 @@ const steps = [
   }
 ];
 
+const QontoConnector = styled(StepConnector)(({ theme }) => ({
+  [`&.${stepConnectorClasses.alternativeLabel}`]: {
+
+  },
+  [`&.${stepConnectorClasses.active}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: '#FFD700',
+    },
+  },
+  [`&.${stepConnectorClasses.completed}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: '#7CFC00',
+    },
+  },
+  [`& .${stepConnectorClasses.line}`]: {
+    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+    borderTopWidth: 3,
+    borderRadius: 1,
+    borderWidth: 5,
+    marginLeft: -3,
+  },
+}));
+
+
 export default function TicketPage() {
   const navigate = useNavigate()
   const [activeStep, setActiveStep] = React.useState(1);
@@ -54,14 +79,12 @@ export default function TicketPage() {
         <div className="ticket-process">
           Ticket Id: 
           <Box sx={{ maxWidth: 400 }}>
-            <Stepper activeStep={activeStep} orientation="vertical">
+            <Stepper activeStep={activeStep}  connector={<QontoConnector />} orientation="vertical">
               {steps.map((step, index) => (
                 <Step key={step.label}>
                   <StepLabel>
                     {step.label}
                   </StepLabel>
-                  <StepContent>
-                  </StepContent>
                 </Step>
               ))}
             </Stepper>
