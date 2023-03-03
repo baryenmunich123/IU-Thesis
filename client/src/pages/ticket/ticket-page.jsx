@@ -63,6 +63,7 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
 export default function TicketPage() {
   const navigate = useNavigate()
   const [activeStep, setActiveStep] = React.useState(1);
+  const [buttonType, setButtonType] = React.useState();
 
   const handleNext = (e) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -70,14 +71,15 @@ export default function TicketPage() {
   };
 
   const handleBack = () => {
-    navigate("/request-page");
+
   };
+
 
   return (
     <MainLayout>
       <div className="ticket-container">
         <div className="ticket-process">
-          Ticket Id: 
+          Ticket Id:
           <Box sx={{ maxWidth: 400 }}>
             <Stepper activeStep={activeStep}  connector={<QontoConnector />} orientation="vertical">
               {steps.map((step, index) => (
@@ -105,24 +107,26 @@ export default function TicketPage() {
           <div className="ticket-output-box">
             Output:
             <form onSubmit={handleNext}>
-            Note*
-            <input type="text" required></input>
-            <div>
-              <Button
-                type='submit'
-                variant="contained"
-                sx={{ mt: 1, mr: 1 }}
-                >
-                Approve
-              </Button>
-              <Button
-                onClick={handleBack}
-                sx={{ mt: 1, mr: 1 }}
-                >
-                DisApprove
-              </Button>
-            </div>
-                </form>
+              Note*
+              <input type="text" required></input>
+              {activeStep === steps.length ? null :
+                <div>
+                  <Button
+                    type='submit'
+                    variant="contained"
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    Approve
+                  </Button>
+                  <Button
+                    // type='submit'
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    DisApprove
+                  </Button>
+                </div>
+              }
+            </form>
           </div>
         </div>
       </div>

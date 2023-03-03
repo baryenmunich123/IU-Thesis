@@ -22,6 +22,7 @@ function RequestForm({ dataFields, formId }) {
     dateCreated: getCurrentDate(),
     phoneNum: ""
   })
+  const [alertMessage, setAlertMessage] = useState("");
 
   let formData = { formId, dynamicFormData, staticFormData }
 
@@ -32,7 +33,8 @@ function RequestForm({ dataFields, formId }) {
       axios
         .post("http://localhost:8080/postFormData", formData)
         .then((res) => {
-          alert( res.data.message)
+          alert(res.data.message)
+          setAlertMessage(res.data.message)
         })
     } catch (e) {
       console.log("Error", e)
@@ -87,6 +89,7 @@ function RequestForm({ dataFields, formId }) {
         <Button variant="outlined" onClick={() => navigate("/")}>Cancel</Button>
         <Button variant="outlined" type="submit">Submit</Button>
       </div>
+      {alertMessage == 'Successfully submit' ? navigate("/request-list") : ''}
     </form>
   );
 }

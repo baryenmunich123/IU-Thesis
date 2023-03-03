@@ -1,14 +1,26 @@
 export const columnsRequestList = [
   {
-    id: "id",
-    label: "ID",
+    id: "ticket_id",
+    label: "Ticket_id",
     minWidth: 170,
     align: "center",
   },
   {
-    id: "requestName",
+    id: "form_name",
     label: "Request Name",
     minWidth: 100,
+    align: "center",
+  },
+  {
+    id: "date_created",
+    label: "Date Created",
+    minWidth: 170,
+    align: "center",
+  },
+  {
+    id: "date_approved",
+    label: "Date Approved",
+    minWidth: 170,
     align: "center",
   },
   {
@@ -18,118 +30,13 @@ export const columnsRequestList = [
     align: "center",
   },
   {
-    id: "type",
-    label: "Type",
-    minWidth: 170,
-    align: "center",
-  },
-  {
     id: "note",
     label: "Note",
     minWidth: 170,
     align: "center",
   },
-  {
-    id: "pdfFile",
-    label: "PDF File",
-    minWidth: 170,
-    align: "center",
-  },
 ];
 
-export const rowsRequestList = [
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "PDF",
-    note: "NA",
-    pdfFile:
-      "https://iuoss.com/wp-content/uploads/2022/10/Ho-va-ten-MSSV-XNQS.docx",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "Paper",
-    note: "NA",
-    pdfFile: "",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "PDF",
-    note: "NA",
-    pdfFile:
-      "https://iuoss.com/wp-content/uploads/2022/10/Ho-va-ten-MSSV-XNQS.docx",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "Paper",
-    note: "NA",
-    pdfFile: "",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "PDF",
-    note: "NA",
-    pdfFile:
-      "https://iuoss.com/wp-content/uploads/2022/10/Ho-va-ten-MSSV-XNQS.docx",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "Paper",
-    note: "NA",
-    pdfFile: "",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "Paper",
-    note: "NA",
-    pdfFile: "",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "Paper",
-    note: "NA",
-    pdfFile: "",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "Paper",
-    note: "NA",
-    pdfFile: "",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "Paper",
-    note: "NA",
-    pdfFile: "",
-  },
-  {
-    id: 1,
-    requestName: "Xác nhận hoãn nghĩa vụ quân sự",
-    status: "Waiting",
-    type: "Paper",
-    note: "NA",
-    pdfFile: "",
-  },
-];
 export const columnsApprovalList = [
   {
     id: "id",
