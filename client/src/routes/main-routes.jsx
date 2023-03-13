@@ -6,12 +6,14 @@ import HomePage from "../pages/home-page/home-page";
 import RequestList from "../pages/request-list/request-list";
 import NotFound from "../pages/not-found/not-found";
 import TicketPage from "../pages/ticket/ticket-page";
+import LandingPage from "../pages/login-page/LoginPage";
 
 function MainRoute() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home-page" element={<HomePage />} />
         <Route path="/request-page" element={<RequestPage />} />
         <Route path="/request-list" element={<RequestList />} />
         <Route path="/approval-list" element={<ApprovalList />} />

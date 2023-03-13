@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Catalogue from "./components/catalogue/Catalogue";
 import "./home-page.css";
 import MainLayout from "../../components/layout";
-function HomePage() {
+function HomePage({account_id}) {
   const [data, setData] = useState([]);
 
   useEffect(() => {

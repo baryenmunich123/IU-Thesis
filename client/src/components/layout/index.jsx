@@ -6,8 +6,10 @@ export default function MainLayout({ children }) {
   return (
     <>
       <Header />
-      <Sidebar />
-      {children}
+      <div styles={{ display: "flex" }}>
+        <Sidebar />
+        {children}
+      </div>
       <Footer />
     </>
   );

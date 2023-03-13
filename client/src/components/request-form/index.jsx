@@ -2,10 +2,19 @@ import React from "react";
 import "./request-form.css";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
+import UserContext from "../../context/UserContext";
 function RequestForm({ dataFields, formId }) {
   const navigate = useNavigate()
+  const { user } = useContext(UserContext);
+  const [userID, setUserID] = useState()
+  useEffect(() => {
+    if (user) {
+      setUserID(user);
+    };
+  }, [user]);
+  console.log(userID)
 
   //Get current date
   const getCurrentDate = () => {
@@ -24,18 +33,26 @@ function RequestForm({ dataFields, formId }) {
   })
   const [alertMessage, setAlertMessage] = useState("");
 
-  let formData = { formId, dynamicFormData, staticFormData }
+  let formData = { formId, dynamicFormData, staticFormData, userID }
+  console.log(formData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("run....")
     try {
-      axios
-        .post("http://localhost:8080/postFormData", formData)
-        .then((res) => {
-          alert(res.data.message)
-          setAlertMessage(res.data.message)
-        })
+      //Check empty form
+      if (dynamicFormData
+        && Object.keys(dynamicFormData).length === 0
+        && Object.getPrototypeOf(dynamicFormData) === Object.prototype) {
+        alert('Please fill out the form')
+      } else {
+        axios
+          .post("http://localhost:8080/postFormData", formData)
+          .then((res) => {
+            alert(res.data.message)
+            setAlertMessage(res.data.message)
+          })
+      }
     } catch (e) {
       console.log("Error", e)
     }
@@ -64,9 +81,9 @@ function RequestForm({ dataFields, formId }) {
             value={staticFormData.phoneNum}
           />
         </div>
+        {/* <br></br>
         <br></br>
-        <br></br>
-        <hr></hr>
+        <hr></hr> */}
         {dataFields.map((item) => {
           return (
             <div className="requestForm-input-wrapper">
@@ -84,12 +101,13 @@ function RequestForm({ dataFields, formId }) {
             </div>
           );
         })}
+        <div className="requestForm-btn-container">
+          <Button variant="outlined" onClick={() => navigate("/home-page")}>Cancel</Button>
+          <Button variant="outlined" type="submit">Submit</Button>
+        </div>
+        {alertMessage == 'Successfully submit' ? navigate("/request-list") : ''}
       </div>
-      <div className="requestForm-btn-container">
-        <Button variant="outlined" onClick={() => navigate("/")}>Cancel</Button>
-        <Button variant="outlined" type="submit">Submit</Button>
-      </div>
-      {alertMessage == 'Successfully submit' ? navigate("/request-list") : ''}
+
     </form>
   );
 }

@@ -3,6 +3,7 @@
     height: 100%;
     width: 260px;
     background-color: #E8E8E8;
+    z-index: 999;
 }
 
 .sidebar-list{

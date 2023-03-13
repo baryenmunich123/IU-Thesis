@@ -35,6 +35,12 @@ export const columnsRequestList = [
     minWidth: 170,
     align: "center",
   },
+  {
+    id: "account_id",
+    label: "Resquestor",
+    minWidth: 170,
+    align: "center",
+  }
 ];
 
 export const columnsApprovalList = [
