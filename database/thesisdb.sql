@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.30, for macos12 (x86_64)
 --
 -- Host: 127.0.0.1    Database: request_portal
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +36,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES ('ITITIU19040','123','student');
+INSERT INTO `account` VALUES ('ITITIU19028','123','student'),('ITITIU19040','123','student');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,10 +108,13 @@ CREATE TABLE `ticket` (
   `note` varchar(45) DEFAULT NULL,
   `ticket_form_no` int NOT NULL,
   `ticket_data` json DEFAULT NULL,
+  `account_id` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ticket_id`),
   KEY `ticket_form_no_idx` (`ticket_form_no`),
-  CONSTRAINT `ticket_form_no` FOREIGN KEY (`ticket_form_no`) REFERENCES `form` (`form_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `account_id` (`account_id`),
+  CONSTRAINT `ticket_form_no` FOREIGN KEY (`ticket_form_no`) REFERENCES `form` (`form_no`),
+  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +123,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(2,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(3,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(4,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(5,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(6,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(7,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(8,'11/02/2023',NULL,'Waiting',NULL,1,NULL),(9,'11/02/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"2019-2023\", \"Lý do\": \"thích\", \"Nơi sinh\": \"TP HCM\", \"Thời gian học tối đa\": \"2023-01\"}'),(10,'12/02/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"2019=2023\", \"Lý do\": \"hoãn NVQS\", \"Nơi sinh\": \"HCM\", \"Thời gian học tối đa\": \"2023-11\"}');
+INSERT INTO `ticket` VALUES (1,'11/02/2023',NULL,'Waiting',NULL,1,NULL,NULL),(2,'11/02/2023',NULL,'Waiting',NULL,1,NULL,NULL),(3,'11/02/2023',NULL,'Waiting',NULL,1,NULL,NULL),(4,'11/02/2023',NULL,'Waiting',NULL,1,NULL,NULL),(5,'11/02/2023',NULL,'Waiting',NULL,1,NULL,NULL),(6,'11/02/2023',NULL,'Waiting',NULL,1,NULL,NULL),(7,'11/02/2023',NULL,'Waiting',NULL,1,NULL,NULL),(8,'11/02/2023',NULL,'Waiting',NULL,1,NULL,NULL),(9,'11/02/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"2019-2023\", \"Lý do\": \"thích\", \"Nơi sinh\": \"TP HCM\", \"Thời gian học tối đa\": \"2023-01\"}',NULL),(10,'12/02/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"2019=2023\", \"Lý do\": \"hoãn NVQS\", \"Nơi sinh\": \"HCM\", \"Thời gian học tối đa\": \"2023-11\"}',NULL),(11,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(12,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(13,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(14,'11/03/2023',NULL,'Waiting',NULL,1,'{\"Lý do\": \"abc\"}',NULL),(15,'11/03/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"123\", \"Lý do\": \"123\", \"Nơi sinh\": \"123\", \"Thời gian học tối đa\": \"2023-03\"}',NULL),(16,'11/03/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"123\", \"Lý do\": \"123\", \"Nơi sinh\": \"123\", \"Thời gian học tối đa\": \"2023-06\"}',NULL),(17,'11/03/2023',NULL,'Waiting',NULL,1,'{\"Khóa\": \"123\", \"Lý do\": \"123\", \"Nơi sinh\": \"123\"}','ITITIU19040'),(18,'11/03/2023',NULL,'Waiting',NULL,1,'{}','ITITIU19040'),(19,'11/03/2023',NULL,'Waiting',NULL,1,'{}','ITITIU19040'),(20,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(21,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(22,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(23,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(24,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(25,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL),(26,'11/03/2023',NULL,'Waiting',NULL,1,'{}',NULL);
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -133,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-12 21:50:48
+-- Dump completed on 2023-03-13 20:27:43
