@@ -81,9 +81,9 @@ function RequestForm({ dataFields, formId }) {
             value={staticFormData.phoneNum}
           />
         </div>
-        {/* <br></br>
         <br></br>
-        <hr></hr> */}
+        <br></br>
+        <hr></hr>
         {dataFields.map((item) => {
           return (
             <div className="requestForm-input-wrapper">

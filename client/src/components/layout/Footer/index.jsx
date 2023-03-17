@@ -27,12 +27,12 @@ function Footer() {
           <h3>Follow</h3>
           <ul className="footer-follow-list">
             <li className="footer-follow-item">
-              <a href="https://www.youtube.com/channel/UCFQ9-P0JXoYo9EOjZGvWm-g/" target="_blank" rel="external noopener nofollow" class="jeg_youtube">
+              <a href="https://www.youtube.com/channel/UCFQ9-P0JXoYo9EOjZGvWm-g/" target="_blank" rel="external noopener nofollow" >
                 <SlSocialYoutube />
               </a>
             </li>
             <li className="footer-follow-item">
-              <a href="https://www.facebook.com/hcmiuoss" target="_blank" rel="external noopener nofollow" class="jeg_facebook">
+              <a href="https://www.facebook.com/hcmiuoss" target="_blank" rel="external noopener nofollow">
                 <SlSocialFacebook />
 
               </a>

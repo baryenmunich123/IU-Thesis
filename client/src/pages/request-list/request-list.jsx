@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { columnsRequestList } from "../../constants/data-test";
 import TableList from "../../components/table-list";
 import MainLayout from "../../components/layout";
+import TicketContext from "../../context/TicketContext";
 
 function RequestList() {
   const [ticketInfo, setTicketInfo] = useState([]);
+  const { getTicketInfo } = useContext(TicketContext);
   let rowsRequestList = []
 
   useEffect(() => {
@@ -13,6 +15,7 @@ function RequestList() {
       .get("http://localhost:8080/getTicketInfo")
       .then((res) => {
         setTicketInfo(res.data);
+        getTicketInfo(res.data) // Pass info to context
         console.log("Ticket Info:", res.data)
       })
       .catch((err) => {

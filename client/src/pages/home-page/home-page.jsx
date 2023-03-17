@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Catalogue from "./components/catalogue/Catalogue";
 import "./home-page.css";
 import MainLayout from "../../components/layout";
-function HomePage({account_id}) {
+import { Button } from "@mui/material";
+function HomePage() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -33,16 +34,20 @@ function HomePage({account_id}) {
               placeholder="Type Keywords to find services"
             />
           </div>
-          {data.map((item) => {
-            const passingData = { id: item.form_no, name: item.form_name };
-            return (
-              <div>
-                <Link to="/request-page" state={passingData}>
-                  {item.form_name}
-                </Link>
-              </div>
-            );
-          })}
+          <div className="homepage-service-container">
+            {data.map((item) => {
+              const passingData = { id: item.form_no, name: item.form_name };
+              return (
+                <div className="homepage-service-btn">
+                  <Button variant="contained">
+                    <Link to="/request-page" state={passingData} className="homepage-service-link">
+                      {item.form_name}
+                    </Link>
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </MainLayout>
     </div>

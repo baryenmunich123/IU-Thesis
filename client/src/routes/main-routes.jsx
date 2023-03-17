@@ -17,7 +17,7 @@ function MainRoute() {
         <Route path="/request-page" element={<RequestPage />} />
         <Route path="/request-list" element={<RequestList />} />
         <Route path="/approval-list" element={<ApprovalList />} />
-        <Route path="/ticket-page" element={<TicketPage />} />
+        <Route path="/ticket-page/:id" element={<TicketPage />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

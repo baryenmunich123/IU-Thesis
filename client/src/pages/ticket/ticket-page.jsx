@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
@@ -61,7 +61,10 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
 
 
 export default function TicketPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const params = useParams();
+  const ticketID = params.id
+
   const [activeStep, setActiveStep] = React.useState(1);
   const [buttonType, setButtonType] = React.useState();
 
@@ -74,14 +77,15 @@ export default function TicketPage() {
 
   };
 
+  console.log(ticketID)
 
   return (
     <MainLayout>
       <div className="ticket-container">
         <div className="ticket-process">
-          Ticket Id:
+          Ticket Id: {ticketID}
           <Box sx={{ maxWidth: 400 }}>
-            <Stepper activeStep={activeStep}  connector={<QontoConnector />} orientation="vertical">
+            <Stepper activeStep={activeStep} connector={<QontoConnector />} orientation="vertical">
               {steps.map((step, index) => (
                 <Step key={step.label}>
                   <StepLabel>

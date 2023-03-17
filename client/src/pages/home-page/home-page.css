@@ -1,22 +1,22 @@
-.homepage-container{
+.homepage-container {
     margin-top: 68px;
     margin-left: 260px;
     background-color: #F5F5F5;
     height: 800px;
 }
 
-.homepage-name{
+.homepage-name {
     font-weight: 700;
     font-size: 50px;
     margin-left: 36px;
 }
 
-.homepage-info{
+.homepage-info {
     display: flex;
     justify-content: space-between;
 }
 
-.homepage-search{
+.homepage-search {
     height: 50px;
     width: 400px;
     margin-top: 10px;
@@ -25,6 +25,21 @@
     border-radius: 6px;
 }
 
-.homepage-catalogue-container{
+.homepage-catalogue-container {
     display: flex;
+}
+
+.homepage-service-container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.homepage-service-btn {
+    margin: 10px;
+    display: inline-block;
+}
+
+.homepage-service-link {
+    color: white;
+    text-decoration: none;
 }

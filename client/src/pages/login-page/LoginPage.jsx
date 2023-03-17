@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Avatar from '@mui/material/Avatar';
@@ -49,9 +49,9 @@ export default function LoginPage() {
             await axios
                 .post("http://localhost:8080/checkAccountInfo", loginInput)
                 .then((res) => {
-                    if (res.data.message == 'Login Successfully') {
+                    if (res.data.message === 'Login Successfully') {
                         getUser(loginInput.account_id)
-                        // setPersistState(loginInput.account_id)
+                        localStorage.setItem('Name', loginInput.account_id);
                         navigate("/home-page")
                     }
                     else

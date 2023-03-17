@@ -23,17 +23,6 @@ function TableList({ columns, rows, name }) {
         setPage(0);
     };
 
-    const renderTableCell = (column, row, value) => {
-        if (column.id == 'action')
-            return <Button variant="outlined">
-                <Link to={'/ticket-page'}>
-                    Proceed
-                </Link>
-            </Button>
-        else
-            return value
-    }
-
     return (
         <Paper sx={{ width: '1660px', overflow: 'hidden', margin: '68px 260px' }}>
             <h1 style={{ padding: '20px 0px 0 20px' }}>{name}</h1>
@@ -58,11 +47,17 @@ function TableList({ columns, rows, name }) {
                             .map((row) => {
                                 return (
                                     <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                        {columns.map((column) => {
+                                        {columns.map((column, key) => {
                                             const value = row[column.id];
+                                            const ticketID = row["ticket_id"]
                                             return (
                                                 <TableCell key={column.id} align={column.align}>
-                                                    {renderTableCell(column, row, value)}
+                                                    {column.id === "action" ?
+                                                        <Button variant="outlined">
+                                                            <Link to={`/ticket-page/:${ticketID}`}>
+                                                                Proceed
+                                                            </Link>
+                                                        </Button> : value}
                                                 </TableCell>
                                             );
                                         })}
