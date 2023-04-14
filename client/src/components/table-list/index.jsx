@@ -54,7 +54,7 @@ function TableList({ columns, rows, name }) {
                                                 <TableCell key={column.id} align={column.align}>
                                                     {column.id === "action" ?
                                                         <Button variant="outlined">
-                                                            <Link to={`/ticket-page/:${ticketID}`}>
+                                                            <Link to={`/ticket-page/${ticketID}`}>
                                                                 Proceed
                                                             </Link>
                                                         </Button> : value}

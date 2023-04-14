@@ -15,4 +15,19 @@ exports.getTicketInfo = async (req, res) => {
       });
     }
 }
+
+exports.getDataByTicketID = async (req, res) => {
+  try {
+    let connection = await dbConnection();
+    let sql = `SELECT ticket_data FROM ticket WHERE ticket_id = ${req.params.id}`;
+    let getDataByTicketID = await sqlQuery(connection, sql);
+    connection.end();
+    res.send(getDataByTicketID);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: error,
+    });
+  }
+}
   

@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const dbConfig = {
     host     : '127.0.0.1',
     user     : 'root',
-    password : 'Ititiu19040',
+    password : 'Phong18092001',
     database : 'request_portal'
 };
 module.exports = () =>

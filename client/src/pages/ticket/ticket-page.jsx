@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -11,6 +12,8 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import MainLayout from '../../components/layout';
 import "./ticket-page.css";
+import PDFFile from '../../components/PDF/PDFFile';
+import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 
 const steps = [
   {
@@ -67,6 +70,7 @@ export default function TicketPage() {
 
   const [activeStep, setActiveStep] = React.useState(1);
   const [buttonType, setButtonType] = React.useState();
+  const [ticketData, setTicketData] = React.useState();
 
   const handleNext = (e) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -78,6 +82,18 @@ export default function TicketPage() {
   };
 
   console.log(ticketID)
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/getDataByTicketID/${ticketID}`)
+      .then((res) => {
+        setTicketData(JSON.parse(res.data[0].ticket_data));
+        console.log("Result:", JSON.parse(res.data[0].ticket_data))
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <MainLayout>
@@ -104,6 +120,9 @@ export default function TicketPage() {
         <div className="ticket-right-container">
           <div className="ticket-form-box">
             Form Information:
+            {/* {ticketData && <PDFViewer>
+              <PDFFile dataReplaced={ticketData} />
+            </PDFViewer>} */}
           </div>
           <div className="ticket-input-box">
             Input from previous step:
@@ -112,7 +131,17 @@ export default function TicketPage() {
             Output:
             <form onSubmit={handleNext}>
               Note*
-              <input type="text" required></input>
+              <textarea required></textarea>
+              {activeStep === 3 ? <p><PDFDownloadLink
+                document={<PDFFile />}
+                fileName={"XacNhanSinhVien.pdf"}
+              >
+                {({ blob, loading, url }) => {
+                  return loading
+                    ? <Button variant='contained'>Loading...</Button>
+                    : <Button variant='contained'>Download File</Button>
+                }}
+              </PDFDownloadLink></p> : ''}
               {activeStep === steps.length ? null :
                 <div>
                   <Button

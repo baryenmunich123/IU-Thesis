@@ -10,11 +10,9 @@ function RequestForm({ dataFields, formId }) {
   const { user } = useContext(UserContext);
   const [userID, setUserID] = useState()
   useEffect(() => {
-    if (user) {
-      setUserID(user);
-    };
-  }, [user]);
-  console.log(userID)
+    setUserID(localStorage.getItem('Name'))
+  }, []);
+  console.log(localStorage.getItem('Name'))
 
   //Get current date
   const getCurrentDate = () => {
