@@ -30,11 +30,17 @@ export const columnsRequestList = [
     align: "center",
   },
   {
-    id: "note",
+    id: "previous_note",
     label: "Note",
     minWidth: 170,
     align: "center",
-  }
+  },
+  {
+    id: "update",
+    label: "Update",
+    minWidth: 170,
+    align: "center",
+  },
 ];
 
 export const columnsApprovalList = [
@@ -69,7 +75,7 @@ export const columnsApprovalList = [
     align: "center",
   },
   {
-    id: "note",
+    id: "previous_note",
     label: "Note",
     minWidth: 170,
     align: "center",
@@ -85,5 +91,26 @@ export const columnsApprovalList = [
     label: "Proceed",
     minWidth: 170,
     align: "center",
-  }
+  },
+];
+
+export const columnsFormManagement = [
+  {
+    id: "form_name",
+    label: "Form name",
+    minWidth: 170,
+    align: "center",
+  },
+  {
+    id: "created_date",
+    label: "Date Created",
+    minWidth: 200,
+    align: "center",
+  },
+  {
+    id: "action",
+    label: "Action",
+    minWidth: 170,
+    align: "center",
+  },
 ];

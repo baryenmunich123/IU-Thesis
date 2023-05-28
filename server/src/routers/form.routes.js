@@ -1,9 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const formController = require("../controllers/form.controller.js")
+const formController = require("../controllers/form.controller.js");
 
-router.get("/getFormList", formController.getFormList);
-router.get("/getFormDataField/:id", formController.getFormDataField);
-router.post("/postFormData", formController.postFormData);
-
+router.post("/createNewDynamicForm", formController.createNewDynamicForm);
+router.get("/getDynamicFormList", formController.getDynamicFormList);
+router.post("/postDynamicFormData", formController.postDynamicFormData);
+router.get("/getDynamicFormByID/:ticketID", formController.getDynamicFormByID);
+router.get(
+  "/getDynamicFormInputsByID/:ticketID",
+  formController.getDynamicFormInputsByID
+);
+router.post("/updateDynamicForm", formController.updateDynamicForm);
+router.post("/deleteDynamicFormById", formController.deleteDynamicFormById);
 module.exports = router;

@@ -1,23 +1,29 @@
 import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
+
 const UserContext = createContext();
 
 function UserContextProvider(props) {
-    const [user, setUser] = useState();
-    const userValue = { user, getUser }
-    useEffect(() => {
-        getUser();
-    }, []);
+  const [user, setUser] = useState(() => {
+    const storedUser = sessionStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : { accountId: "", role: "" };
+  });
 
-    function getUser(userInfo) {
-        setUser(userInfo);
-    }
+  useEffect(() => {
+    sessionStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
-    return (
-        <UserContext.Provider value={userValue}>
-            {props.children}
-        </UserContext.Provider>
-    );
+  function getUser(userInfo) {
+    setUser(userInfo);
+  }
+
+  const userValue = { user, getUser };
+
+  return (
+    <UserContext.Provider value={userValue}>
+      {props.children}
+    </UserContext.Provider>
+  );
 }
+
 export default UserContext;
 export { UserContextProvider };

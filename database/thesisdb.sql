@@ -3,6 +3,7 @@
 -- Host: 127.0.0.1    Database: request_portal
 -- ------------------------------------------------------
 -- Server version	8.0.32
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Phong18092001';
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,6 +38,7 @@ CREATE TABLE `account` (
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 INSERT INTO `account` VALUES ('ITITIU19028','123','student'),('ITITIU19040','123','student');
+
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -12,17 +12,16 @@
 }
 
 .homepage-info {
+    width: 90%;
+    margin:0 auto;
+    padding: 0px 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .homepage-search {
-    height: 50px;
-    width: 400px;
-    margin-top: 10px;
-    margin-right: 40px;
-    border: 1px solid #4B4444;
-    border-radius: 6px;
+margin-top:10px;
 }
 
 .homepage-catalogue-container {

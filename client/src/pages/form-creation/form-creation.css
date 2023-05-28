@@ -1,0 +1,28 @@
+.form-container {
+    margin-top: 68px;
+    margin-left: 260px;
+    background-color: #F5F5F5;
+    height: 800px;
+}
+
+.form-name {
+    font-weight: 700;
+    font-size: 50px;
+    margin-left: 36px;
+}
+
+.form-title{ 
+    display:flex;
+    padding:10px;
+    justify-content: space-between;
+    width:50%;
+    align-items: center;
+}
+
+
+.form-service-link {
+    display:block;
+    height: 45px;
+    color: white;
+    text-decoration: none;
+}

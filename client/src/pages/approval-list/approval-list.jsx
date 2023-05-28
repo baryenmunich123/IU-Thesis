@@ -4,42 +4,34 @@ import { columnsApprovalList } from "../../constants/data-test";
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import TicketContext from "../../context/TicketContext";
-
+import UserContext from "../../context/UserContext";
 
 function ApprovalList() {
-
-  const { ticket, getTicketInfo } = useContext(TicketContext);
   const [ticketInfo, setTicketInfo] = useState([]);
-  let rowsApprovalList = []
-
-  // useEffect(() => {
-  //   if (ticket) {
-  //     getTicketInfo();
-  //     setTicketInfo(ticket)
-  //   }
-  // }, [ticket]);
+  let rowsApprovalList = [];
 
   useEffect(() => {
     axios
       .get("http://localhost:8080/getTicketInfo")
       .then((res) => {
         setTicketInfo(res.data);
-        console.log("Ticket Info:", res.data)
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-
   ticketInfo.map((item, index) => {
-    rowsApprovalList[index] = item
-  })
-
+    rowsApprovalList[index] = item;
+  });
   return (
     <div>
       <MainLayout>
-        <TableList rows={rowsApprovalList} columns={columnsApprovalList} name="Approval List" />
+        <TableList
+          rows={rowsApprovalList}
+          columns={columnsApprovalList}
+          name="Approval List"
+        />
       </MainLayout>
     </div>
   );

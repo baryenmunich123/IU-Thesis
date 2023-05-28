@@ -4,16 +4,14 @@ import { Link } from "react-router-dom";
 import Catalogue from "./components/catalogue/Catalogue";
 import "./home-page.css";
 import MainLayout from "../../components/layout";
-import { Button } from "@mui/material";
+import { Button, Input, TextField } from "@mui/material";
 function HomePage() {
-  const [data, setData] = useState([]);
-
+  const [dynamicForm, setDynamicForm] = useState();
   useEffect(() => {
     axios
-      .get("http://localhost:8080/getFormList")
+      .get("http://localhost:8080/getDynamicFormList")
       .then((res) => {
-        setData(res.data);
-        console.log(res)
+        setDynamicForm(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -26,27 +24,40 @@ function HomePage() {
         <div className="homepage-container">
           <div className="homepage-info">
             <h1 className="homepage-name">Services</h1>
-            <input
+
+            <TextField
               className="homepage-search"
-              // autocomplete="off"
-              type="text"
-              id=""
-              placeholder="Type Keywords to find services"
+              label="Search"
+              variant="outlined"
+              placeholder="Find Services..."
+              size="small"
             />
           </div>
           <div className="homepage-service-container">
-            {data.map((item) => {
-              const passingData = { id: item.form_no, name: item.form_name };
-              return (
-                <div className="homepage-service-btn">
-                  <Button variant="contained">
-                    <Link to="/request-page" state={passingData} className="homepage-service-link">
-                      {item.form_name}
-                    </Link>
-                  </Button>
-                </div>
-              );
-            })}
+            {dynamicForm && (
+              <>
+                {dynamicForm.map((item) => {
+                  const passingData = {
+                    name: item.form_name,
+                    data: item.form_data,
+                    form_no: item.form_no,
+                  };
+                  return (
+                    <div className="homepage-service-btn">
+                      <Button variant="contained">
+                        <Link
+                          to="/request-dynamic"
+                          state={passingData}
+                          className="homepage-service-link"
+                        >
+                          {item.form_name}
+                        </Link>
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            )}
           </div>
         </div>
       </MainLayout>
