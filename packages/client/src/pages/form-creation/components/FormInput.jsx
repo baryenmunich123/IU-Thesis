@@ -53,7 +53,6 @@ function FormInput(props) {
             style={{ marginLeft: "10px" }}
             type="text"
             defaultValue={"Insert new name..."}
-            maxLength={"20"}
             onChange={(event) => setValue(event.target.value)}
           />
           <Button

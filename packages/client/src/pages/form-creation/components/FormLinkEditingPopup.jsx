@@ -76,7 +76,6 @@ export default function FormLinkEditingPopup(props) {
                   <label>Form name*:</label> <br />
                   <input
                     type="text"
-                    maxLength={"30"}
                     defaultValue={formLinkName}
                     {...register(`formLinkName`, { required: true })}
                   />

@@ -2,10 +2,10 @@ import emailjs from "emailjs-com";
 export async function sendEmailtoStudents(mailParams) {
   try {
     const resp = await emailjs.send(
-      "service_30v0ikz",
-      "template_fi2wf3k",
+      "service_lkssckr",
+      "template_zrurawn",
       mailParams,
-      "il9QG9B7XFL3sfpV0"
+      "bkhRwgX4pogIC92vo"
     );
     return true;
   } catch (error) {
@@ -17,10 +17,10 @@ export async function sendEmailtoStudents(mailParams) {
 export async function sendEmailtoStaffs(mailParams) {
   try {
     const resp = await emailjs.send(
-      "service_gv0rnxw",
-      "template_89jk78h",
+      "service_r6sii0t",
+      "template_ufi5yka",
       mailParams,
-      "il9QG9B7XFL3sfpV0"
+      "bkhRwgX4pogIC92vo"
     );
 
     return true;

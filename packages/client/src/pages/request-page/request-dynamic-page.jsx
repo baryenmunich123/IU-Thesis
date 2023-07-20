@@ -58,8 +58,8 @@ export default function RequestDynamicForm() {
 
   const onSubmit = useCallback(
     async (data) => {
-      data["Ngày lập yêu cầu"] = currentDate;
       const formattedDate = currentDate.format(TIMESTAMP_FORMAT);
+      data["Ngày lập yêu cầu"] = formattedDate;
       const stringifyData = JSON.stringify(data);
       const formData = { formattedDate, formId, userID, stringifyData };
       try {
@@ -78,7 +78,7 @@ export default function RequestDynamicForm() {
               to_email: emails,
               from_name: "ĐHQG",
               to_name: "NHÂN VIÊN",
-              message: "CÓ ĐƠN MỚI CẦN XÉT DUYỆT",
+              message: "CÓ ĐƠN CẦN XÉT DUYỆT",
               subject: "CÓ ĐƠN MỚI",
               reply_to: emails,
             };

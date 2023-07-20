@@ -57,7 +57,7 @@ export const Footer = () => {
       <div className={classes.divider} />
       <div className={classes.footerList}>
         <div className={classes.footerContent}>
-          <h3>IU Office of Student Services</h3>
+          <h3>School of Computer Science and Engineering</h3>
           <p className={classes.footerContentDescription}>
             We are committed to providing the best customer service internally
             and externally. It can be witnessed in how we treat our employees,
@@ -69,11 +69,11 @@ export const Footer = () => {
           <ul className={classes.footerContactList}>
             <li>
               <FaLocationArrow />
-              Room O1.105, Quarter 6, Linh Trung Ward, Thu Duc City, HCM
+              Khu phố 6, P. Linh Trung, Thành phố Thủ Đức, TP.HCM
             </li>
             <li>
               <AiFillPhone />
-              PHONE: (+84) 028 3724 4270 ext: 3334, 3826
+              PHONE: (028) 37244270 ext. 3232
             </li>
           </ul>
         </div>
@@ -81,15 +81,12 @@ export const Footer = () => {
           <h3 style={{ textAlign: "center" }}>Follow</h3>
           <ul className={classes.footerFollowList}>
             <li>
-              <a
-                href="https://www.youtube.com/channel/UCFQ9-P0JXoYo9EOjZGvWm-g/"
-                target="_blank"
-              >
+              <a href="https://it.hcmiu.edu.vn/vi/trang-chu/" target="_blank">
                 <SlSocialYoutube />
               </a>
             </li>
             <li>
-              <a href="https://www.facebook.com/hcmiuoss" target="_blank">
+              <a href="https://it.hcmiu.edu.vn/vi/trang-chu/">
                 <SlSocialFacebook />
               </a>
             </li>
